@@ -45,7 +45,7 @@ $saved_ip")
 #发送IYUU通知
 response=$(send_iyuu "$iyuu_text" "$iyuu_desp" "$iyuu_token")
 # 更新IP记录文件为最新的IP地址
-echo "$current_ip6" > $wan_ip
+echo "$current_ip" > $wan_ip
 # 更新事件记录log
 echo "$(date) Script executed at $(date) WAN IP has changed">> $exc_log
 echo "$(date) $response">> $exc_log
