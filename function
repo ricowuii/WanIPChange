@@ -8,3 +8,21 @@ send_iyuu () {
     curl -s -X POST -d "text=$text_param&desp=$desp_param" https://iyuu.cn/$target_url_param.send
 }
 
+#获取所有公网IP的IPV4和IPV6地址
+#显示的格式为：网卡名称：IP地址
+function get_global_ips() {
+    # 获取公网IPv4地址
+    ip -o -4 addr show scope global \
+    | grep -Ev 'inet (10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[0-1]\.|192\.168\.|127\.)' \
+    | awk '{print $2 ": " $4}' \
+    | cut -d/ -f1
+    
+    # 获取公网IPv6地址
+    ip -o -6 addr show scope global \
+    | grep -v 'fe80:' \
+    | grep -v 'fc00:' \
+    | grep -v 'fec0:' \
+    | grep -v '::1' \
+    | awk '{print $2 ": " $4}' \
+    | cut -d/ -f1
+}
