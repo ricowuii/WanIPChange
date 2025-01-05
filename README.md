@@ -15,64 +15,47 @@ WANIPCHANGE 是一个用于监控和通知您的 WAN IP 地址变化的工具。
     ```bash
     git clone https://github.com/ricowuii/WanIPChange.git
     ```
-2. 进入项目目录：
-    ```bash
-    cd WanIPChange
-    ```
-3. 安装所需依赖：
-    ```bash
-    npm install
-    ```
 
 ### 使用
-1. 运行工具：
-    ```bash
-    npm start
-    ```
-2. 在 `config.ini` 文件中配置您的通知设置。以下是一个示例配置：
+1. 在 `config.ini` 文件中配置您的通知设置。以下是一个示例配置：
 
     ```ini
        iyuu_token = Your IYUU Token
     ```
 
     将占位符替换为您的IYUU 令牌。
+2. 执行IPs_change_informer.sh脚本
 
-## English
-
-### Introduction
-WANIPCHANGE is a tool designed to monitor and notify changes in your WAN IP address. This can be useful for various purposes such as remote access, security, and network management.
-
-### Features
-- Monitors WAN IP address changes
-- Sends notifications on IP change
-- Easy to configure and use
-
-### Installation
-1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/WanIPChange.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd WanIPChange
-    ```
-3. Install the required dependencies:
-    ```bash
-    npm install
+    bash IPs_change_informer.sh
     ```
 
-### Usage
-1. Run the tool:
-    ```bash
-    npm start
-    ```
-2. Configure your notification settings in the `config.ini` file. Here is an example configuration:
+    ## English
 
-    ```ini
-        iyuu_token = Your IYUU Token
-    ```
+    ### Introduction
+    WANIPCHANGE is a tool for monitoring and notifying you of changes in your WAN IP address. This is useful for various purposes such as remote access, security, and network management.
 
-    Replace the placeholders with your actual IYUU token.
+    ### Features
+    - Monitor WAN IP address changes
+    - Send notifications when the IP changes
+    - Easy to configure and use
 
-### 许可证
-此项目使用 MIT 许可证。
+    ### Installation
+    1. Clone the repository:
+        ```bash
+        git clone https://github.com/ricowuii/WanIPChange.git
+        ```
+
+    ### Usage
+    1. Configure your notification settings in the `config.ini` file. Here is a sample configuration:
+
+        ```ini
+           iyuu_token = Your IYUU Token
+        ```
+
+        Replace the placeholder with your IYUU token.
+    2. Run the IPs_change_informer.sh script
+
+        ```bash
+        bash IPs_change_informer.sh
+        ```
