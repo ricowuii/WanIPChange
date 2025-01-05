@@ -2,19 +2,20 @@
 
 # 设置脚本所在目录
 script_dir=$(dirname $0)
+#存储IP地址的文件
+wan_ip="$script_dir/wan_ip.txt"
+#脚本执行log文件
+exc_log="$script_dir/check_wan_ip.log"
+#配置文件config.ini
+config_file="$script_dir/config.ini"
 
 #导入发送IYUU函数
 source $script_dir/function
 
 #iyuu标题
 iyuu_text="$(uname -n)WANIPChanged"
-#iyuu token
-iyuu_token="IYUU57489Te561fae2c57115d2c158d0438a6df163453b8b51"
-#存储IP地址的文件
-wan_ip="$script_dir/wan_ip.txt"
-#脚本执行log文件
-exc_log="$script_dir/check_wan_ip.log"
-
+#iyuu token，从config.ini获取
+iyuu_token=$(get_iyuu_token "$config_file" "$exc_log")
 
 # 调用get_global_ips函数，获取所有公网IP
 current_ip="$(get_global_ips)"
@@ -50,6 +51,6 @@ echo "$current_ip" > $wan_ip
 echo "$(date) Script executed at $(date) WAN IP has changed">> $exc_log
 echo "$(date) $response">> $exc_log
 else
-# 未更新，执行记录记录Log
-echo "$(date) WAN IP does not changed.WAN IPs address:$current_ip">> $exc_log
+    # 未更新，执行记录记录Log
+    echo "$(date) WAN IP does not changed.WAN IPs address:$current_ip">> $exc_log
 fi

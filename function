@@ -26,3 +26,23 @@ function get_global_ips() {
     | awk '{print $2 ": " $4}' \
     | cut -d/ -f1
 }
+
+#获取config.ini中的IYUU token，参数为config.ini文件和log文件
+get_iyuu_token() {
+    local config_file="$1"
+    local log_file="$2"
+    local iyuu_token
+
+    if [ ! -f "$config_file" ]; then
+        echo "$(date): Config file '$config_file' not found." >> "$log_file"
+        
+    fi
+
+    iyuu_token=$(grep -o '^iyuu_token=[^[:space:]]*' "$config_file" | cut -d'=' -f2)
+    if [ -z "$iyuu_token" ]; then
+        echo "$(date): 'iyuu_token' not found in '$config_file'." >> "$log_file"
+        
+    fi
+
+    echo "$iyuu_token"
+}
