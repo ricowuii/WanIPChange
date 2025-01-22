@@ -43,7 +43,7 @@ else
     # 设置IYUU发送内容
     iyuu_desp_no_clean=$(echo -e "$(date) \n 文件 $file_path 大小为 $current_size K，未超过指定大小 $threshold_size K，不执行清理。")
     # 执行IYUU消息发送
-    response=$(send_iyuu "$iyuu_text" "$iyuu_desp_no_clean" "$iyuu_token")
+    #response=$(send_iyuu "$iyuu_text" "$iyuu_desp_no_clean" "$iyuu_token")
     # 记录Log
     echo "$iyuu_desp_no_clean" >>$file_path
     echo "$(date) $response" >> $file_path
